@@ -1,6 +1,8 @@
 import { Device } from "../../types";
 import { getIcon } from "../../assets";
 import { useTranslation } from "react-i18next";
+import { Button } from "../Button";
+
 import "./styles.css";
 
 interface ItemProps {
@@ -28,16 +30,16 @@ export const Item: React.FC<ItemProps> = ({ device, onEdit, onDelete }) => {
         </p>
       </div>
       <div className="device-actions">
-        <button className="action-btn">
+        <Button className="action-btn" onClick={() => {}}>
           <img src={getIcon("menu")} alt={t("menu_icon")} />
-        </button>
+        </Button>
         <div className="menu">
-          <button className="edit-btn" onClick={() => onEdit(device)}>
+          <Button className="edit-btn" onClick={() => onEdit(device)}>
             {t("Edit")}
-          </button>
-          <button className="delete-btn" onClick={() => onDelete(device)}>
+          </Button>
+          <Button className="delete-btn" onClick={() => onDelete(device)}>
             {t("Delete")}
-          </button>
+          </Button>
         </div>
       </div>
     </div>
