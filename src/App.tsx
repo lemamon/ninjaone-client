@@ -8,6 +8,7 @@ import { Filters } from "./components/Filters";
 import { List } from "./components/List";
 import { Delete } from "./components/Delete";
 import { ErrorModal } from "./components/ErrorModal";
+
 import "./App.css";
 
 function App() {
