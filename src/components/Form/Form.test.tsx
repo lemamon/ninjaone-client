@@ -29,8 +29,8 @@ describe("Form component", () => {
     sortBy: "",
     devices: [],
     filteredDevices: [],
-    addDevice: vi.fn(),
-    editDevice: vi.fn(),
+    addDevice: mockAddDevice,
+    editDevice: mockEditDevice,
     deleteDevice: vi.fn(),
     setSearch: mockSetSearch,
     setDeviceType: mockSetDeviceType,
@@ -43,8 +43,8 @@ describe("Form component", () => {
   });
 
   it("should render empty form when no device is provided", () => {
-    render(<Form onClose={mockOnClose} />);
-    
+    render(<Form onClose={mockOnClose} {...defaultProps} />);
+
     expect(screen.getByLabelText(/systemName/)).toHaveValue("");
     expect(screen.getByLabelText(/deviceType/)).toHaveValue("");
     expect(screen.getByLabelText(/hddCapacity/)).toHaveValue("");
@@ -55,29 +55,38 @@ describe("Form component", () => {
       id: "1",
       system_name: "Test Device",
       type: "WINDOWS",
-      hdd_capacity: "500"
+      hdd_capacity: "500",
     };
 
-    render(<Form onClose={mockOnClose} device={mockDevice} />);
-    
-    expect(screen.getByLabelText(/systemName/)).toHaveValue(mockDevice.system_name);
+    render(
+      <Form onClose={mockOnClose} device={mockDevice} {...defaultProps} />
+    );
+
+    expect(screen.getByLabelText(/systemName/)).toHaveValue(
+      mockDevice.system_name
+    );
     expect(screen.getByLabelText(/deviceType/)).toHaveValue(mockDevice.type);
-    expect(screen.getByLabelText(/hddCapacity/)).toHaveValue(mockDevice.hdd_capacity);
+    expect(screen.getByLabelText(/hddCapacity/)).toHaveValue(
+      mockDevice.hdd_capacity
+    );
   });
 
   it("should call addDevice when submitting new device", async () => {
-    render(<Form onClose={mockOnClose} />);
-    
+    render(<Form onClose={mockOnClose} {...defaultProps} />);
+
     await userEvent.type(screen.getByLabelText(/systemName/), "New Device");
-    await userEvent.selectOptions(screen.getByLabelText(/deviceType/), "WINDOWS");
+    await userEvent.selectOptions(
+      screen.getByLabelText(/deviceType/),
+      "WINDOWS"
+    );
     await userEvent.type(screen.getByLabelText(/hddCapacity/), "1000");
-    
+
     await userEvent.click(screen.getByText("submit"));
-    
+
     expect(mockAddDevice).toHaveBeenCalledWith({
       system_name: "New Device",
       type: "WINDOWS",
-      hdd_capacity: "1000"
+      hdd_capacity: "1000",
     });
     expect(mockOnClose).toHaveBeenCalled();
   });
@@ -87,32 +96,34 @@ describe("Form component", () => {
       id: "1",
       system_name: "Test Device",
       type: "WINDOWS",
-      hdd_capacity: "500"
+      hdd_capacity: "500",
     };
 
-    render(<Form onClose={mockOnClose} device={mockDevice} />);
-    
+    render(
+      <Form onClose={mockOnClose} device={mockDevice} {...defaultProps} />
+    );
+
     await userEvent.clear(screen.getByLabelText(/systemName/));
     await userEvent.type(screen.getByLabelText(/systemName/), "Updated Device");
-    
+
     await userEvent.click(screen.getByText("submit"));
-    
+
     expect(mockEditDevice).toHaveBeenCalledWith({
       id: "1",
       system_name: "Updated Device",
       type: "WINDOWS",
-      hdd_capacity: "500"
+      hdd_capacity: "500",
     });
     expect(mockOnClose).toHaveBeenCalled();
   });
 
   it("should disable submit button when form is invalid", () => {
-    render(<Form onClose={mockOnClose} />);
+    render(<Form onClose={mockOnClose} {...defaultProps} />);
     expect(screen.getByText("submit")).toBeDisabled();
   });
 
   it("should call onClose when cancel button is clicked", async () => {
-    render(<Form onClose={mockOnClose} />);
+    render(<Form onClose={mockOnClose} {...defaultProps} />);
     await userEvent.click(screen.getByText("cancel"));
     expect(mockOnClose).toHaveBeenCalled();
   });
