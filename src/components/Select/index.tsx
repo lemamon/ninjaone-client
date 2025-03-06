@@ -3,7 +3,7 @@ import "./styles.css";
 interface SelectProps {
   id?: string;
   name?: string;
-  value: string;
+  value?: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   options: { key: string; value: string; text: string }[];
   className?: string;
