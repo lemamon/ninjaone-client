@@ -1,0 +1,141 @@
+.device-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+  padding: 16px;
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+
+  &:hover {
+    background-color: #f4f4f5;
+    .device-actions {
+      display: flex;
+    }
+  }
+
+  .device-info {
+    width: 100%;
+
+    h3 {
+      font-size: 14px;
+      margin: 0;
+      color: #333;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin: 0;
+      color: #666;
+      font-size: 12px;
+      font-weight: 100;
+    }
+  }
+
+  .device-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .os-icon {
+    width: 16px;
+    height: 16px;
+    margin-bottom: 4px;
+  }
+
+  .device-actions {
+    width: 100%;
+    display: none;
+    justify-content: center;
+    gap: 8px;
+
+    &:hover {
+      .edit-btn,
+      .delete-btn {
+        display: flex;
+      }
+      .action-btn {
+        background: #e8e8ea;
+      }
+
+      .menu {
+        background: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: absolute;
+    padding: 8px;
+    margin-top: 36px;
+    margin-right: 104px;
+    width: 120px;
+  }
+
+  .action-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    flex: 1;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    display: none;
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+
+  .edit-btn {
+    background-color: transparent;
+    color: #333;
+  }
+
+  .delete-btn {
+    background: transparent;
+    color: #f44336;
+  }
+}
+
+
+@media (min-width: 769px) {
+  .device-item {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+
+    .device-name {
+      justify-content: flex-start;
+    }
+
+    .device-actions {
+      width: auto;
+    }
+
+    .edit-btn,
+    .delete-btn {
+      flex: none;
+    }
+  }
+}
