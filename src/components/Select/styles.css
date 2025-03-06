@@ -1,0 +1,31 @@
+.select-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-size: 14px;
+    font-weight: 100;
+    color: #333;
+  }
+
+  .select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    appearance: none;
+    background: url("../../assets/arrow-down.svg") no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+    background-color: white;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+      border-color: #337ab7;
+      box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+    }
+  }
+}
