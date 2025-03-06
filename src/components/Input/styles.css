@@ -1,0 +1,44 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+
+  label {
+    font-size: 14px;
+    font-weight: 100;
+    color: #333;
+  }
+
+  input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  input:focus {
+    outline: none;
+    border-color: #337ab7;
+    box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+  }
+
+  &.with-icon input {
+    padding-left: 36px;
+  }
+
+  .icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .icon-search {
+    background-image: url("../../assets/search.svg");
+  }
+}
