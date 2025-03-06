@@ -14,7 +14,7 @@ export const Header: React.FC<HeaderProps> = ({ onAddDevice }) => {
   return (
     <header className="header">
       <div className="header-content">
-        <img className="logo" src={getIcon("logo")} />
+        <img className="logo" src={getIcon("logo")} alt="logo" />
         <Button className="add-device-btn" onClick={onAddDevice}>
           <img src={getIcon("plus")} alt="Add device icon" />
           {t("addDevice")}
