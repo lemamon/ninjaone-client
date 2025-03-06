@@ -3,50 +3,11 @@
   flex-direction: column;
   gap: 12px;
   margin-bottom: 24px;
-
-  .search-input,
-  .device-type-select,
-  .sort-select {
-    width: 100%;
-    min-width: unset;
-    padding: 8px 12px;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-
-  .search-input {
-    background: url("../../assets/search.svg") no-repeat;
-    background-position: 12px center;
-    background-size: 16px;
-    padding-left: 36px;
-  }
-
-  .device-type-select,
-  .sort-select {
-    appearance: none;
-    background: url("../../assets/arrow-down.svg") no-repeat;
-    background-position: right 12px center;
-    background-size: 16px;
-    padding-right: 40px;
-    background-color: white;
-    cursor: pointer;
-  }
 }
 
 @media (min-width: 769px) {
   .filters {
     flex-direction: row;
     gap: 16px;
-
-    .search-input {
-      width: 200px;
-    }
-
-    .device-type-select,
-    .sort-select {
-      min-width: 200px;
-      width: auto;
-    }
   }
 }
