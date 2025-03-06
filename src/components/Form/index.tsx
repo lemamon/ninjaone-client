@@ -3,7 +3,8 @@ import { useDevice } from "../../contexts/DeviceContext";
 import { useTranslation } from "react-i18next";
 import { Device, DeviceTypeForm } from "../../types";
 import { Select } from "../Select";
-import { Input } from "../Input"; // Import the new Input component
+import { Input } from "../Input";
+import { Button } from "../Button";
 
 import "./styles.css";
 
@@ -82,12 +83,12 @@ export function Form({ onClose, device }: FormProps) {
       </div>
 
       <div className="form-actions">
-        <button type="button" onClick={onClose} className="cancel-button">
+        <Button type="button" onClick={onClose} className="cancel-button">
           {t("cancel")}
-        </button>
-        <button type="submit" className="submit-button" disabled={!isFormValid}>
+        </Button>
+        <Button type="submit" className="submit-button" disabled={!isFormValid}>
           {t("submit")}
-        </button>
+        </Button>
       </div>
     </form>
   );
