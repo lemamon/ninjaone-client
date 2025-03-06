@@ -16,7 +16,11 @@ interface FormProps {
 export function Form({ onClose, device }: FormProps) {
   const { t } = useTranslation();
   const { addDevice, editDevice } = useDevice();
-  const [formData, setFormData] = useState<Partial<Device>>(device || {});
+  const [formData, setFormData] = useState<Partial<Device>>(() => ({
+    system_name: device?.system_name || "",
+    type: device?.type || "",
+    hdd_capacity: device?.hdd_capacity || ""
+  }));
 
   const isFormValid = useMemo(
     () => !!formData.system_name && !!formData.type && !!formData.hdd_capacity,
@@ -26,10 +30,15 @@ export function Form({ onClose, device }: FormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    const submissionData = {
+      ...formData,
+      hdd_capacity: String(formData.hdd_capacity)
+    };
+
     if (device?.id) {
-      await editDevice(formData as Device);
+      await editDevice({ ...submissionData, id: device.id } as Device);
     } else {
-      await addDevice(formData as Device);
+      await addDevice(submissionData as Device);
     }
     onClose();
   };
@@ -52,7 +61,7 @@ export function Form({ onClose, device }: FormProps) {
           label={t("systemName") + " *"}
           id="system_name"
           name="system_name"
-          value={formData?.system_name || ""}
+          value={formData.system_name}
           onChange={handleChange}
           required
         />
@@ -63,7 +72,7 @@ export function Form({ onClose, device }: FormProps) {
           label={t("deviceType")}
           id="type"
           name="type"
-          value={formData?.type || ""}
+          value={formData.type}
           onChange={handleChange}
           options={DeviceTypeForm}
         />
@@ -74,10 +83,9 @@ export function Form({ onClose, device }: FormProps) {
           label={t("hddCapacity") + " *"}
           id="hdd_capacity"
           name="hdd_capacity"
-          type="number"
-          value={formData?.hdd_capacity || ""}
+          type="text"
+          value={formData.hdd_capacity}
           onChange={handleChange}
-          min="0"
           required
         />
       </div>
