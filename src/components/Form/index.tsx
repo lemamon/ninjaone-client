@@ -2,6 +2,9 @@ import { useState, useMemo } from "react";
 import { useDevice } from "../../contexts/DeviceContext";
 import { useTranslation } from "react-i18next";
 import { Device, DeviceTypeForm } from "../../types";
+import { Select } from "../Select";
+import { Input } from "../Input"; // Import the new Input component
+
 import "./styles.css";
 
 interface FormProps {
@@ -44,9 +47,8 @@ export function Form({ onClose, device }: FormProps) {
   return (
     <form onSubmit={handleSubmit} className="device-form">
       <div className="form-group">
-        <label htmlFor="system_name">{t('systemName')} *</label>
-        <input
-          type="text"
+        <Input
+          label={t("systemName") + " *"}
           id="system_name"
           name="system_name"
           value={formData?.system_name || ""}
@@ -56,27 +58,22 @@ export function Form({ onClose, device }: FormProps) {
       </div>
 
       <div className="form-group">
-        <label htmlFor="type">{t('deviceType')} *</label>
-        <select
+        <Select
+          label={t("deviceType")}
           id="type"
           name="type"
           value={formData?.type || ""}
           onChange={handleChange}
-        >
-          {DeviceTypeForm.map(({ key, value, text }) => (
-            <option key={key} value={value}>
-              {text}
-            </option>
-          ))}
-        </select>
+          options={DeviceTypeForm}
+        />
       </div>
 
       <div className="form-group">
-        <label htmlFor="hdd_capacity">{t('hddCapacity')} *</label>
-        <input
-          type="number"
+        <Input
+          label={t("hddCapacity") + " *"}
           id="hdd_capacity"
           name="hdd_capacity"
+          type="number"
           value={formData?.hdd_capacity || ""}
           onChange={handleChange}
           min="0"
@@ -86,10 +83,10 @@ export function Form({ onClose, device }: FormProps) {
 
       <div className="form-actions">
         <button type="button" onClick={onClose} className="cancel-button">
-          {t('cancel')}
+          {t("cancel")}
         </button>
         <button type="submit" className="submit-button" disabled={!isFormValid}>
-          {t('submit')}
+          {t("submit")}
         </button>
       </div>
     </form>
