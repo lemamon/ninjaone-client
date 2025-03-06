@@ -1,5 +1,7 @@
 import { getIcon } from "../../assets";
 import { useTranslation } from "react-i18next";
+import { Button } from "../Button";
+
 import "./styles.css";
 
 interface HeaderProps {
@@ -13,10 +15,10 @@ export const Header: React.FC<HeaderProps> = ({ onAddDevice }) => {
     <header className="header">
       <div className="header-content">
         <img className="logo" src={getIcon("logo")} />
-        <button className="add-device-btn" onClick={onAddDevice}>
+        <Button className="add-device-btn" onClick={onAddDevice}>
           <img src={getIcon("plus")} alt="Add device icon" />
           {t("addDevice")}
-        </button>
+        </Button>
       </div>
     </header>
   );
