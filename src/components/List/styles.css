@@ -1,0 +1,5 @@
+.devices-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #e0e0e0;
+}
