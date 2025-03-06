@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Device } from "./types";
 import { Form } from "./components/Form";
 import { Modal } from "./components/Modal";
-import { Device } from "./types";
 import { Header } from "./components/Header";
 import { Filters } from "./components/Filters";
 import { List } from "./components/List";
