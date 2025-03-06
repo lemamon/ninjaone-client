@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 
 interface ButtonProps {
-  onClick: () => void;
+  onClick?: () => void;
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
@@ -20,7 +20,7 @@ export const Button: React.FC<ButtonProps> = ({
     <button
       type={type}
       className={`button ${className}`}
-      onClick={onClick}
+      onClick={() => onClick && onClick()}
       disabled={disabled}
     >
       {children}
