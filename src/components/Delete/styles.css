@@ -5,4 +5,8 @@
     gap: 8px;
     margin-top: 16px;
   }
+
+  .cancel-button {
+    color: #211F33;
+  }
 }
