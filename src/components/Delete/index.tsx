@@ -7,11 +7,18 @@ import { Button } from "../Button";
 interface DeleteProps {
   onClose: () => void;
   device: Device;
+  onSuccess?: (message: string) => void;
 }
 
-export const Delete = ({ onClose, device }: DeleteProps) => {
+export const Delete = ({ onClose, device, onSuccess }: DeleteProps) => {
   const { t } = useTranslation();
   const { deleteDevice } = useDevice();
+
+  const handleDelete = async () => {
+    await deleteDevice(device.id!);
+    onSuccess?.(t("deviceDeleted"));
+    onClose();
+  };
 
   return (
     <div className="delete-modal">
@@ -24,13 +31,7 @@ export const Delete = ({ onClose, device }: DeleteProps) => {
         <Button className="cancel-button" onClick={onClose}>
           {t("cancel")}
         </Button>
-        <Button
-          className="delete-button"
-          onClick={() => {
-            deleteDevice(device.id!);
-            onClose();
-          }}
-        >
+        <Button className="delete-button" onClick={handleDelete}>
           {t("delete")}
         </Button>
       </div>
