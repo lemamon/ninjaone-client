@@ -75,7 +75,7 @@ The client application will be available at <http://localhost:5173>
 
 - Built with React + Vite
 - Uses TypeScript for type safety
-- Includes unit tests using Vitest
+- Includes unit tests using Vitest and React Testing Library
 
 ## Testing
 
