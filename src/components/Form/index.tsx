@@ -11,15 +11,16 @@ import "./styles.css";
 interface FormProps {
   onClose: () => void;
   device?: Device;
+  onSuccess?: (message: string) => void;
 }
 
-export function Form({ onClose, device }: FormProps) {
+export function Form({ onClose, device, onSuccess }: FormProps) {
   const { t } = useTranslation();
   const { addDevice, editDevice } = useDevice();
   const [formData, setFormData] = useState<Partial<Device>>(() => ({
     system_name: device?.system_name || "",
     type: device?.type || "",
-    hdd_capacity: device?.hdd_capacity || ""
+    hdd_capacity: device?.hdd_capacity || "",
   }));
 
   const isFormValid = useMemo(
@@ -32,13 +33,15 @@ export function Form({ onClose, device }: FormProps) {
 
     const submissionData = {
       ...formData,
-      hdd_capacity: String(formData.hdd_capacity)
+      hdd_capacity: String(formData.hdd_capacity),
     };
 
     if (device?.id) {
       await editDevice({ ...submissionData, id: device.id } as Device);
+      onSuccess?.(t("deviceUpdated"));
     } else {
       await addDevice(submissionData as Device);
+      onSuccess?.(t("deviceCreated"));
     }
     onClose();
   };
