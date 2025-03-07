@@ -32,6 +32,7 @@ export const Filters: React.FC = () => {
           text: type,
         }))}
         className="device-type-select"
+        prefix={t("deviceType") + ":"}
       />
 
       <Select
@@ -43,6 +44,7 @@ export const Filters: React.FC = () => {
           text: t(option),
         }))}
         className="sort-select"
+        prefix={t("sortBy") + ":"}
       />
     </div>
   );
