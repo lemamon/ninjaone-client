@@ -3,11 +3,24 @@
   flex-direction: column;
   gap: 12px;
   margin-bottom: 24px;
+
+  .device-type-select,
+  .sort-select {
+    width: 100%;
+  }
 }
 
 @media (min-width: 769px) {
   .filters {
     flex-direction: row;
     gap: 16px;
+
+    .device-type-select {
+      width: 200px;
+    }
+  
+    .sort-select {
+      width: 270px;
+    }
   }
 }
