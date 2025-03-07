@@ -8,6 +8,7 @@ import { Filters } from "./components/Filters";
 import { List } from "./components/List";
 import { Delete } from "./components/Delete";
 import { ErrorModal } from "./components/ErrorModal";
+import { Success } from "./components/Success";
 
 import "./App.css";
 
@@ -16,6 +17,8 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedDevice, setSelectedDevice] = useState<Device | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string>("");
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
   const handleAddDevice = () => {
     setSelectedDevice(null);
@@ -42,6 +45,16 @@ function App() {
     setSelectedDevice(null);
   };
 
+  const handleCloseSuccessModal = () => {
+    setIsSuccessModalOpen(false);
+    setSuccessMessage("");
+  };
+
+  const showSuccessMessage = (message: string) => {
+    setSuccessMessage(message);
+    setIsSuccessModalOpen(true);
+  };
+
   return (
     <div className="container">
       <Header onAddDevice={handleAddDevice} />
@@ -61,6 +74,10 @@ function App() {
           <Form
             onClose={handleCloseModal}
             device={selectedDevice || undefined}
+            onSuccess={(message) => {
+              handleCloseModal();
+              showSuccessMessage(message);
+            }}
           />
         </Modal>
       )}
@@ -71,9 +88,22 @@ function App() {
           isOpen={isDeleteModalOpen}
           onClose={handleCloseDeleteModal}
         >
-          <Delete device={selectedDevice} onClose={handleCloseDeleteModal} />
+          <Delete
+            device={selectedDevice}
+            onClose={handleCloseDeleteModal}
+            onSuccess={(message) => {
+              handleCloseDeleteModal();
+              showSuccessMessage(message);
+            }}
+          />
         </Modal>
       )}
+
+      <Success
+        isOpen={isSuccessModalOpen}
+        onClose={handleCloseSuccessModal}
+        message={successMessage}
+      />
 
       <ErrorModal />
     </div>
