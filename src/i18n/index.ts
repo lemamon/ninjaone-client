@@ -22,13 +22,15 @@ i18n
           edit: "Edit",
           devices: "Devices",
           search: "Search",
+          sortBy: "Sort by",
           sortByHDDDesc: "Sort by: HDD Capacity (Descending)",
           sortByHDDAsc: "Sort by: HDD Capacity (Ascending)",
-          deleteConfirmation: "You are about to delete the device {{deviceName}}. This action cannot be undone.",
+          deleteConfirmation:
+            "You are about to delete the device {{deviceName}}. This action cannot be undone.",
           deviceCreated: "Device created successfully",
           deviceUpdated: "Device updated successfully",
-          deviceDeleted: "Device deleted successfully"
-        }
+          deviceDeleted: "Device deleted successfully",
+        },
       },
       pt: {
         translation: {
@@ -44,15 +46,17 @@ i18n
           edit: "Editar",
           devices: "Dispositivos",
           search: "Buscar",
+          sortBy: "Ordenar por",
           sortByHDDDesc: "Ordenar por: Capacidade do HD (Decrescente)",
           sortByHDDAsc: "Ordenar por: Capacidade do HD (Crescente)",
-          deleteConfirmation: "Você está prestes a excluir o dispositivo {{deviceName}}. Esta ação não pode ser desfeita.",
+          deleteConfirmation:
+            "Você está prestes a excluir o dispositivo {{deviceName}}. Esta ação não pode ser desfeita.",
           deviceCreated: "Dispositivo criado com sucesso",
           deviceUpdated: "Dispositivo atualizado com sucesso",
-          deviceDeleted: "Dispositivo excluído com sucesso"
-        }
-      }
-    }
-  })
+          deviceDeleted: "Dispositivo excluído com sucesso",
+        },
+      },
+    },
+  });
 
 export default i18n;
