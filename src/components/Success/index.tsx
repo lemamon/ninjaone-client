@@ -1,6 +1,7 @@
 import { Modal } from "../Modal";
 import { Button } from "../Button";
 
+import "./styles.css";
 interface SuccessProps {
   isOpen: boolean;
   onClose: () => void;
@@ -13,7 +14,9 @@ export const Success = ({ isOpen, onClose, message }: SuccessProps) => {
       <div className="success-modal">
         <p>{message}</p>
         <div className="form-actions">
-          <Button onClick={onClose}>OK</Button>
+          <Button className="submit-button" onClick={onClose}>
+            OK
+          </Button>
         </div>
       </div>
     </Modal>
