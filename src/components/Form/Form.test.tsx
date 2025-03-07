@@ -47,7 +47,7 @@ describe("Form component", () => {
 
     expect(screen.getByLabelText(/systemName/)).toHaveValue("");
     expect(screen.getByLabelText(/deviceType/)).toHaveValue("");
-    expect(screen.getByLabelText(/hddCapacity/)).toHaveDisplayValue("");
+    expect(screen.getByLabelText(/hddCapacity/)).toHaveValue("");
   });
 
   it("should render form with device data when device is provided", () => {
@@ -66,8 +66,8 @@ describe("Form component", () => {
       mockDevice.system_name
     );
     expect(screen.getByLabelText(/deviceType/)).toHaveValue(mockDevice.type);
-    expect(screen.getByLabelText(/hddCapacity/)).toHaveDisplayValue(
-      mockDevice.hdd_capacity
+    expect(screen.getByLabelText(/hddCapacity/)).toHaveValue(
+      mockDevice.hdd_capacity.toString()
     );
   });
 
