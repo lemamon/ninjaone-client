@@ -86,7 +86,7 @@ export function Form({ onClose, device, onSuccess }: FormProps) {
           label={t("hddCapacity") + " *"}
           id="hdd_capacity"
           name="hdd_capacity"
-          type="text"
+          type="number"
           value={formData.hdd_capacity}
           onChange={handleChange}
           required
